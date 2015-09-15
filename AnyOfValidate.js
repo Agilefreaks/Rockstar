@@ -1,7 +1,7 @@
-function AnyOfValidation(model) {
-  var drumResult = SimpleValidation(model, 'drums');
-  var guitarResult = SimpleValidation(model, 'guitar');
-  var validationResults = [drumResult, guitarResult];
+function AnyOfValidation(childRules, model) {
+  var validationResults = _.map(childRules, function (rule) {
+    return rule(model);
+  });
   var isValid = _.some(validationResults, 'isValid');
   return {
     isValid: isValid,

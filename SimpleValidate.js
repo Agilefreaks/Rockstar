@@ -1,4 +1,4 @@
-function propertyRequired(model, property) {
+function propertyRequired(property, model) {
   return _.isString(model.get(property));
 }
 
@@ -6,8 +6,8 @@ function getMessage(property) {
   return property + " cannot be empty ";
 }
 
-function SimpleValidation(model, property) {
-  var isValid = propertyRequired(model, property);
+function SimpleValidation(property, model) {
+  var isValid = propertyRequired(property, model);
   return {
     isValid: isValid,
     message: isValid
@@ -15,4 +15,3 @@ function SimpleValidation(model, property) {
       : getMessage(property)
   }
 }
-
